@@ -9,11 +9,15 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~48.0.9",
+    "@expo/vector-icons": "^13.0.0",
+    "expo": "^47.0.0",
+    "expo-font": "~11.0.1",
+    "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.4",
-    "react": "18.2.0",
-    "react-native": "0.71.6",
-    "react-native-debugger": "^1.1.0"
+    "react": "18.1.0",
+    "react-devtools": "^4.27.3",
+    "react-native": "0.70.5",
+    "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
