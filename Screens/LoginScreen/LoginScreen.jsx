@@ -19,7 +19,7 @@ const initialState = {
   password: "",
 };
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [state, setState] = useState(initialState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
@@ -37,6 +37,7 @@ export default function LoginScreen() {
     keyboardHide();
     console.log(state);
     setState(initialState);
+    navigation.navigate("Home");
   };
 
   return (
@@ -121,11 +122,15 @@ export default function LoginScreen() {
                     >
                       <Text style={styles.btnTitle}>Увійти</Text>
                     </TouchableOpacity>
-                    <View style={styles.link}>
+                    <TouchableOpacity
+                      style={styles.link}
+                      activeOpacity={0.8}
+                      onPress={({}) => navigation.navigate("Register")}
+                    >
                       <Text style={styles.linkTitle}>
                         Немає облікового запису? Зареєструватись
                       </Text>
-                    </View>
+                    </TouchableOpacity>
                   </View>
                 )}
               </View>

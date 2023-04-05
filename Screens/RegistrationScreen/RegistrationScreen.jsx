@@ -22,7 +22,7 @@ const initialState = {
   password: "",
 };
 
-export default function RegistrationScreen() {
+export default function RegistrationScreen({ navigation }) {
   const [state, setState] = useState(initialState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
@@ -41,6 +41,7 @@ export default function RegistrationScreen() {
     keyboardHide();
     console.log(state);
     setState(initialState);
+    navigation.navigate("Home");
   };
 
   return (
@@ -154,9 +155,13 @@ export default function RegistrationScreen() {
                     >
                       <Text style={styles.btnTitle}>Зареєструватися</Text>
                     </TouchableOpacity>
-                    <View style={styles.link}>
+                    <TouchableOpacity
+                      style={styles.link}
+                      activeOpacity={0.8}
+                      onPress={() => navigation.navigate("Login")}
+                    >
                       <Text style={styles.linkTitle}>Вже є акаунт? Увійти</Text>
-                    </View>
+                    </TouchableOpacity>
                   </View>
                 )}
               </View>
