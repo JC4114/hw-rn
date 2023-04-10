@@ -1,32 +1,23 @@
-import React, { useState } from 'react';
-
-import { NavigationContainer } from '@react-navigation/native';
-
-import AppLoading from 'expo-app-loading';
-import useFonts from './src/hooks/useFonts';
-
-import { useRoute } from './src/router';
+import React from "react";
+import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import Main from "./components/Main";
 
 export default function App() {
-  const [IsReady, SetIsReady] = useState(false);
-  const routing = useRoute(false);
+  const [fontsLoaded] = useFonts({
+    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+  });
 
-  const LoadFonts = async () => {
-    await useFonts();
-  };
-
-  if (!IsReady) {
-    return (
-      <AppLoading
-        startAsync={LoadFonts}
-        onFinish={() => SetIsReady(true)}
-        onError={() => {}}
-      />
-    );
+  if (!fontsLoaded) {
+    return null;
   }
+
   return (
-    <NavigationContainer>
-      {routing}
-    </NavigationContainer>
+    <Provider store={store}>
+      <Main />
+    </Provider>
   );
-};
+}
